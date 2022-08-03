@@ -1,5 +1,5 @@
 FROM trailofbits/etheno:latest
-MAINTAINER Evan Sultanik
+LABEL com.trailofbits.image.author="Evan Sultanik"
 
 USER root
 ENV HOME="/root"
@@ -55,5 +55,6 @@ USER root
 COPY motd /etc/motd
 RUN echo '\ncat /etc/motd\n' >> /etc/bash.bashrc
 USER ethsec
-
+COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/bin/bash"]
+CMD [ "/entrypoint.sh" ]
